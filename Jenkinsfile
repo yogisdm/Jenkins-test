@@ -28,6 +28,7 @@ pipeline {
 	
     stage('Mediawiki-deploy') {
       steps {
+	  input 'Apply plan'
         sh 'terraform apply -input=false -auto-approve'
 	      
       }
