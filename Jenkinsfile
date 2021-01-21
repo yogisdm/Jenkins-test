@@ -14,7 +14,7 @@ pipeline {
       steps {
 	    sh 'terraform init'
         sh 'terraform --version'
-		sh 'terraform plan'
+		sh 'terraform plan -input=false -out tfplan'
       }
     }
 	
