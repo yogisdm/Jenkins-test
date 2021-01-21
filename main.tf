@@ -17,18 +17,13 @@ data "aws_ami" "mediawikiami" {
   }
 }
 
-resource "aws_security_group" "sec_group" {
-  name   = "Jenkins-SG"
-  vpc_id = "vpc-0d344d8f40eb95322"
-}
-
 #Provision an EC2 instance for hosting wediawiki server
 resource "aws_instance" "mediawiki_server" {
 	ami				= data.aws_ami.mediawikiami.id
 	instance_type	= "t2.small"
 	key_name         = "yogiassigment"
 	subnet_id 		 = var.subnet_ID
-	vpc_security_group_ids 		=  data.aws_security_group.sec_group.id
+	security_groups 		=  var.security_group_ID
 	tags = {
     	  Name		= "mediawiki_server"
 	}
