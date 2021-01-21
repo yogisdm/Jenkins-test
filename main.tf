@@ -23,7 +23,7 @@ resource "aws_instance" "mediawiki_server" {
 	instance_type	= "t2.small"
 	key_name         = "yogiassigment"
 	subnet_id 		 = var.subnet_ID
-	security_groups 		=  var.security_group_ID
+	security_groups 		= [ var.security_group_ID ]
 	tags = {
     	  Name		= "mediawiki_server"
 	}
